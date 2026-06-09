@@ -51,7 +51,7 @@ Commands run:
 Verification:
 
 - Confirmed `.env.local` is covered by `.gitignore`.
-- Added public Sanity/Vercel values for project `10gug3t1`, dataset `production`, and `https://www.jaroslawkaliski.com`.
+- Added public Sanity/Vercel values for project `l0gug3t1`, dataset `production`, and `https://www.jaroslawkaliski.com`.
 - Generated a private `SANITY_REVALIDATE_SECRET`.
 
 Next step:
