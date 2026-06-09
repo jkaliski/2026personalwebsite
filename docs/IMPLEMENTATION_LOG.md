@@ -81,3 +81,35 @@ Verification:
 Next step:
 
 - Add the same `SANITY_API_READ_TOKEN` value in Vercel environment variables for draft preview support.
+
+## 2026-06-09 Vercel Build Fix
+
+Goal: Fix the TypeScript and lint failures behind the Vercel `npm run build` error.
+
+Files changed:
+
+- Updated `src/app/api/revalidate/route.ts` for the current Next.js `revalidateTag` API.
+- Replaced internal Sanity image-url type imports with a local exported type from `src/sanity/lib/image.ts`.
+- Tightened the Sanity fallback merge helper in `src/sanity/lib/fetch.ts`.
+- Updated `eslint.config.mjs` to the current Next.js flat config style.
+- Pinned package versions in `package.json` and added `package-lock.json`.
+- Updated this implementation log.
+
+Commands run:
+
+- Downloaded npm into `/tmp` because npm is not available on this work computer.
+- Installed dependencies in `/tmp/jk-build-check` rather than in the iCloud project folder.
+- `./node_modules/.bin/tsc --noEmit`
+- `npm run lint`
+- `npm install --package-lock-only --ignore-scripts`
+
+Verification:
+
+- TypeScript passed in the temporary install.
+- ESLint passed in the temporary install.
+- `package.json` and `package-lock.json` parse successfully.
+- A full local `next build` is still blocked by this machine's locked-down macOS/Node runtime failing to load Next's native SWC binary; Vercel should not hit that local-only code-signing issue.
+
+Next step:
+
+- Redeploy on Vercel. If it still fails, copy the first error block above `Command "npm run build" exited with 1`.

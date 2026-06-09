@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({message: 'Invalid revalidation secret'}, {status: 401})
   }
 
-  revalidateTag('sanity')
+  revalidateTag('sanity', 'max')
   revalidatePath('/')
 
   return NextResponse.json({revalidated: true, now: new Date().toISOString()})

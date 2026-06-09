@@ -8,7 +8,7 @@ import {isSanityConfigured} from './env'
 import {HOME_PAGE_QUERY} from './queries'
 
 function mergeDefined<T extends object>(base: T, override: Partial<T> | null | undefined): T {
-  const result = {...base} as T & Record<string, unknown>
+  const result = {...base} as Record<string, unknown>
 
   for (const [key, value] of Object.entries(override || {})) {
     if (value !== null && value !== undefined) {
@@ -16,7 +16,7 @@ function mergeDefined<T extends object>(base: T, override: Partial<T> | null | u
     }
   }
 
-  return result
+  return result as T
 }
 
 function withFallback(result: Partial<SiteContent> | null | undefined): SiteContent {

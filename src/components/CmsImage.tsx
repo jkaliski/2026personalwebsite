@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import type {SanityImageSource} from '@sanity/image-url/lib/types/types'
 
-import {urlFor} from '@/sanity/lib/image'
+import {urlFor, type SanityImageSource} from '@/sanity/lib/image'
 import type {CmsImage as CmsImageType} from '@/types/site'
 
 type CmsImageProps = {

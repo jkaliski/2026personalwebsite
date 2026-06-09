@@ -12,23 +12,22 @@
     "seed:note": "node scripts/seed-note.mjs"
   },
   "dependencies": {
-    "@portabletext/react": "latest",
-    "@sanity/image-url": "latest",
-    "@sanity/vision": "latest",
-    "next": "^16.2.2",
-    "next-sanity": "latest",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "sanity": "latest",
-    "styled-components": "latest"
+    "@portabletext/react": "6.2.0",
+    "@sanity/image-url": "2.1.1",
+    "@sanity/vision": "5.30.0",
+    "next": "16.2.7",
+    "next-sanity": "13.0.11",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "sanity": "5.30.0",
+    "styled-components": "6.4.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "^16.2.2",
-    "typescript": "latest"
+    "@types/node": "25.9.2",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.7",
+    "typescript": "5.9.3"
   }
 }
