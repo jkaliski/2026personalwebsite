@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "sanity": "sanity",
+    "seed:create": "node scripts/create-sanity-seed.mjs",
+    "seed:import": "npm run seed:create && sanity datasets import sanity-seed.ndjson production --replace",
     "seed:note": "node scripts/seed-note.mjs"
   },
   "dependencies": {

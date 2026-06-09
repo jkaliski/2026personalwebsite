@@ -113,3 +113,32 @@ Verification:
 Next step:
 
 - Redeploy on Vercel. If it still fails, copy the first error block above `Command "npm run build" exited with 1`.
+
+## 2026-06-09 Sanity Seed Import
+
+Goal: Avoid manual recreation of the prototype content in Sanity Studio.
+
+Files changed:
+
+- Added `scripts/create-sanity-seed.mjs`.
+- Added `seed:create` and `seed:import` scripts to `package.json`.
+- Added `sanity-seed.ndjson` to `.gitignore` because it contains local image file paths.
+- Updated `README.md`, `docs/SANITY_CONTENT_MODEL.md`, `docs/SETUP_ON_NEW_COMPUTER.md`, and `scripts/seed-note.mjs`.
+- Updated this implementation log.
+
+Commands run:
+
+- `node --check scripts/create-sanity-seed.mjs`
+- `node scripts/create-sanity-seed.mjs`
+- `wc -l sanity-seed.ndjson`
+
+Verification:
+
+- Seed generation created 58 Sanity documents.
+- The generated import includes stable references from `homePage` to the supporting documents.
+- The generated import includes `_sanityAsset` references for the starter hero, biography, and contact images.
+- `sanity-seed.ndjson` remains ignored by git.
+
+Next step:
+
+- On a computer with npm/Sanity CLI access, run `npm run seed:create`, then `npx sanity@latest datasets import sanity-seed.ndjson production --replace`.

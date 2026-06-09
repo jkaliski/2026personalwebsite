@@ -26,3 +26,6 @@ pnpm-debug.log*
 .DS_Store
 *.swp
 *.swo
+
+# generated Sanity import with local file paths
+sanity-seed.ndjson

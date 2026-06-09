@@ -48,7 +48,14 @@ SANITY_API_READ_TOKEN=your-read-token
 SANITY_REVALIDATE_SECRET=long-random-secret
 ```
 
-The site uses local fallback content until Sanity has real `siteSettings` and `homePage` documents. See `docs/SANITY_CONTENT_MODEL.md` for the first content-entry pass.
+The site uses local fallback content until Sanity has real `siteSettings` and `homePage` documents. To recreate the prototype content in Sanity:
+
+```bash
+npm run seed:create
+npx sanity@latest datasets import sanity-seed.ndjson production --replace
+```
+
+See `docs/SANITY_CONTENT_MODEL.md` for details.
 
 ## Scripts
 
@@ -59,6 +66,8 @@ npm run typecheck
 npm run build
 npm run start
 npm run sanity
+npm run seed:create
+npm run seed:import
 npm run seed:note
 ```
 

@@ -57,7 +57,16 @@ npx sanity@latest init
 
 Choose or create a project, keep the dataset as `production`, and use the existing embedded Studio files in this repo.
 
-8. Vercel deployment:
+8. Seed the Sanity dataset from the prototype content:
+
+```bash
+npm run seed:create
+npx sanity@latest datasets import sanity-seed.ndjson production --replace
+```
+
+The generated `sanity-seed.ndjson` file is ignored by git because it contains local file paths for image upload. Regenerate it on each computer when needed.
+
+9. Vercel deployment:
 
 - Create a Git repository for this folder.
 - Push it to GitHub/GitLab/Bitbucket.
@@ -65,7 +74,7 @@ Choose or create a project, keep the dataset as `production`, and use the existi
 - Add the `.env.local` values as Vercel environment variables.
 - Add a Sanity webhook pointing to `/api/revalidate`.
 
-9. After Sanity content exists:
+10. After Sanity content exists:
 
 - Edit the `siteSettings` document.
 - Edit the `homePage` document and reference the supporting documents.
