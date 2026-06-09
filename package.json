@@ -1,0 +1,34 @@
+{
+  "name": "jaroslaw-kaliski-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "sanity": "sanity",
+    "seed:note": "node scripts/seed-note.mjs"
+  },
+  "dependencies": {
+    "@portabletext/react": "latest",
+    "@sanity/image-url": "latest",
+    "@sanity/vision": "latest",
+    "next": "^16.2.2",
+    "next-sanity": "latest",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sanity": "latest",
+    "styled-components": "latest"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "^16.2.2",
+    "typescript": "latest"
+  }
+}
