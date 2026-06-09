@@ -34,3 +34,50 @@ Next step:
 
 - On a computer with npm, run `npm install`, then `npm run lint`, `npm run typecheck`, and `npm run build`.
 - Create/link the Sanity project and enter the first `siteSettings` and `homePage` documents using `src/content/fallback.ts` as the source.
+
+## 2026-06-09 Local Environment Setup
+
+Goal: Add local environment values for the Sanity project and production domain.
+
+Files changed:
+
+- Added `.env.local` locally. This file is ignored by git and should not be committed.
+- Updated this implementation log.
+
+Commands run:
+
+- `openssl rand -hex 32`
+
+Verification:
+
+- Confirmed `.env.local` is covered by `.gitignore`.
+- Added public Sanity/Vercel values for project `10gug3t1`, dataset `production`, and `https://www.jaroslawkaliski.com`.
+- Generated a private `SANITY_REVALIDATE_SECRET`.
+
+Next step:
+
+- Add the same environment values in Vercel, then create a Sanity read token when draft preview is needed.
+
+## 2026-06-09 Sanity Read Token
+
+Goal: Add the local Sanity read token for draft/preview reads.
+
+Files changed:
+
+- Updated `.env.local` locally with `SANITY_API_READ_TOKEN`. This file is ignored by git and should not be committed.
+- Added swap-file ignore patterns to `.gitignore`.
+- Updated this implementation log.
+
+Commands run:
+
+- Checked git status to confirm `.env.local` remains ignored.
+- Removed temporary local swap/macOS metadata files.
+
+Verification:
+
+- Confirmed `SANITY_API_READ_TOKEN` is present in `.env.local`.
+- Confirmed the secret value is not written into tracked documentation.
+
+Next step:
+
+- Add the same `SANITY_API_READ_TOKEN` value in Vercel environment variables for draft preview support.
