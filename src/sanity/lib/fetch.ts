@@ -1,5 +1,3 @@
-import {draftMode} from 'next/headers'
-
 import type {
   AppointmentsSection,
   BiographySection,
@@ -16,8 +14,8 @@ import type {
   UpcomingSection,
 } from '@/types/site'
 
-import {client} from './client'
 import {isSanityConfigured} from './env'
+import {getLiveFetchOptions, sanityFetch} from './live'
 import {HOME_PAGE_QUERY} from './queries'
 
 type LegacyHomeContent = Partial<HomeContent> & {
@@ -207,17 +205,14 @@ export async function getSiteContent(): Promise<SiteContent> {
     )
   }
 
-  const {isEnabled} = await draftMode()
-  const token = process.env.SANITY_API_READ_TOKEN
-  const fetchClient = isEnabled ? client.withConfig({useCdn: false}) : client
-
-  const data = await fetchClient.fetch<Partial<SiteContent>>(HOME_PAGE_QUERY, {}, {
-    cache: isEnabled ? 'no-store' : 'force-cache',
-    next: isEnabled ? undefined : {tags: ['sanity', 'home']},
-    perspective: isEnabled && token ? 'drafts' : 'published',
-    token: isEnabled ? token : undefined,
-    stega: isEnabled,
+  const {perspective, stega} = await getLiveFetchOptions()
+  const {data} = await sanityFetch({
+    query: HOME_PAGE_QUERY,
+    perspective,
+    stega,
+    tags: ['sanity', 'home'],
+    requestTag: 'home-page',
   })
 
-  return assertSiteContent(data)
+  return assertSiteContent(data as Partial<SiteContent>)
 }
