@@ -312,4 +312,4 @@ const ndjson = documents.map((document) => JSON.stringify(document)).join('\n')
 fs.writeFileSync(outputPath, `${ndjson}\n`)
 
 console.log(`Created ${path.relative(projectRoot, outputPath)} with ${documents.length} documents.`)
-console.log('Import with: npx sanity@latest datasets import sanity-seed.ndjson production --replace')
+console.log('Import with: npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace')

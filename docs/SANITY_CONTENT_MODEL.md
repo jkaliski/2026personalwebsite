@@ -8,7 +8,7 @@ You do not need to type all prototype content manually. Generate and import the 
 
 ```bash
 npm run seed:create
-npx sanity@latest datasets import sanity-seed.ndjson production --replace
+npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
 ```
 
 The generator reads `src/content/fallback.ts`, writes `sanity-seed.ndjson`, and creates:

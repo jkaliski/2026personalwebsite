@@ -61,7 +61,7 @@ Choose or create a project, keep the dataset as `production`, and use the existi
 
 ```bash
 npm run seed:create
-npx sanity@latest datasets import sanity-seed.ndjson production --replace
+npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
 ```
 
 The generated `sanity-seed.ndjson` file is ignored by git because it contains local file paths for image upload. Regenerate it on each computer when needed.

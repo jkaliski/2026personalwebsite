@@ -12,7 +12,7 @@ Generate a Sanity NDJSON import from it with:
 
 Then import it into the production dataset with:
 
-  npx sanity@latest datasets import sanity-seed.ndjson production --replace
+  npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
 
 The generated import creates:
 

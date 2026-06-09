@@ -52,7 +52,7 @@ The site uses local fallback content until Sanity has real `siteSettings` and `h
 
 ```bash
 npm run seed:create
-npx sanity@latest datasets import sanity-seed.ndjson production --replace
+npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
 ```
 
 See `docs/SANITY_CONTENT_MODEL.md` for details.
