@@ -21,9 +21,9 @@ export const imageWithCaption = defineType({
     }),
     defineField({
       name: 'fallbackSrc',
-      title: 'Local fallback path',
+      title: 'Legacy local image path',
       type: 'string',
-      description: 'Optional path such as /images/portrait-hero.jpg used before a Sanity image is uploaded.',
+      description: 'Optional legacy path such as /images/portrait-hero.jpg. Prefer uploading the image asset to Sanity.',
     }),
   ],
 })

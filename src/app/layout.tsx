@@ -4,6 +4,8 @@ import {Inter, Inter_Tight, JetBrains_Mono} from 'next/font/google'
 import {VisualEditing} from 'next-sanity/visual-editing'
 import type {ReactNode} from 'react'
 
+import {hasSanityReadToken, SanityLive} from '@/sanity/lib/live'
+
 import './globals.css'
 
 const inter = Inter({
@@ -38,6 +40,7 @@ export default async function RootLayout({children}: Readonly<{children: ReactNo
     <html lang="en" className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
       <body>
         {children}
+        <SanityLive includeDrafts={isEnabled && hasSanityReadToken} />
         {isEnabled ? <VisualEditing /> : null}
       </body>
     </html>

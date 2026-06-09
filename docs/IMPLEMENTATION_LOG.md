@@ -142,3 +142,21 @@ Verification:
 Next step:
 
 - On a computer with npm/Sanity CLI access, run `npm run seed:create`, then `npx sanity@latest datasets import sanity-seed.ndjson production --replace`.
+
+## 2026-06-09 Visual Editing Page Builder
+
+Goal: Make the migrated Sanity production dataset the only runtime content source and enable Studio Presentation visual editing.
+
+Files changed:
+
+- Converted `homePage` to an ordered `sections[]` page-builder schema.
+- Added Sanity Presentation Tool configuration.
+- Added live-preview helpers and official draft-mode enable route.
+- Refactored the homepage renderer into section components with `data-sanity` annotations.
+- Removed local fallback content and seed scripts because production Sanity content is already migrated.
+- Updated README and setup/content-model docs.
+
+Verification:
+
+- Run `npm run lint`, `npm run typecheck`, and `npm run build`.
+- Run `npm run dev` with real Sanity environment values, then verify `/studio/presentation`.

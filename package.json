@@ -8,15 +8,13 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "sanity": "sanity",
-    "seed:create": "node scripts/create-sanity-seed.mjs",
-    "seed:import": "npm run seed:create && sanity datasets import --dataset production sanity-seed.ndjson --replace",
-    "seed:note": "node scripts/seed-note.mjs"
+    "sanity": "sanity"
   },
   "dependencies": {
     "@portabletext/react": "6.2.0",
     "@sanity/image-url": "2.1.1",
     "@sanity/vision": "5.30.0",
+    "@sanity/visual-editing": "5.4.3",
     "next": "16.2.7",
     "next-sanity": "13.0.11",
     "react": "19.2.7",

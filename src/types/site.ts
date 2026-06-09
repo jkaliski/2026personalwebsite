@@ -2,7 +2,18 @@ import type {PortableTextBlock} from 'sanity'
 
 export type RichText = string[] | PortableTextBlock[]
 
+export type SanityDocumentMeta<TType extends string = string> = {
+  _id?: string
+  _type?: TType
+}
+
+export type SanityArrayMeta<TType extends string = string> = {
+  _key?: string
+  _type: TType
+}
+
 export type CmsImage = {
+  _type?: 'image'
   asset?: {
     _ref?: string
     url?: string
@@ -14,17 +25,17 @@ export type CmsImage = {
   crop?: unknown
 }
 
-export type MetaPair = {
+export type MetaPair = SanityArrayMeta<'metaPair'> & {
   label: string
   value: string
 }
 
-export type LinkItem = {
+export type LinkItem = Partial<SanityArrayMeta<'linkItem'>> & {
   label: string
   href: string
 }
 
-export type RoleCredit = {
+export type RoleCredit = SanityArrayMeta<'roleCredit'> & {
   name: string
   role: string
 }
@@ -43,7 +54,7 @@ export type FeaturedProduction = {
   link: LinkItem
 }
 
-export type Production = {
+export type Production = SanityDocumentMeta<'production'> & {
   year: string
   title: string
   meta: string
@@ -51,7 +62,7 @@ export type Production = {
   venue: string
 }
 
-export type Appointment = {
+export type Appointment = SanityDocumentMeta<'appointment'> & {
   label: string
   title: string
   institution: string
@@ -60,7 +71,7 @@ export type Appointment = {
   bullets?: string[]
 }
 
-export type VideoFeature = {
+export type VideoFeature = SanityDocumentMeta<'videoFeature'> & {
   title: string
   description: string
   tag: string
@@ -68,43 +79,43 @@ export type VideoFeature = {
   archiveLinks?: LinkItem[]
 }
 
-export type LyricCourse = {
+export type LyricCourse = SanityDocumentMeta<'lyricCourse'> & {
   order: string
   title: string
   launch: string
   body: string
 }
 
-export type Testimonial = {
+export type Testimonial = SanityDocumentMeta<'testimonial'> & {
   label: string
   quote: string
   attribution: string
 }
 
-export type RepertoireGroup = {
+export type RepertoireGroup = SanityDocumentMeta<'repertoireGroup'> & {
   title: string
   items: string[]
 }
 
-export type EducationItem = {
+export type EducationItem = SanityDocumentMeta<'educationItem'> & {
   year: string
   title: string
   institution: string
   detail: string
 }
 
-export type Award = {
+export type Award = SanityDocumentMeta<'award'> & {
   year: string
   title: string
 }
 
-export type LanguageSkill = {
+export type LanguageSkill = SanityDocumentMeta<'languageSkill'> & {
   name: string
   level: string
   value: number
 }
 
-export type SiteSettings = {
+export type SiteSettings = SanityDocumentMeta<'siteSettings'> & {
   title: string
   description: string
   logoText: string
@@ -117,73 +128,92 @@ export type SiteSettings = {
   links: LinkItem[]
 }
 
-export type HomeContent = {
-  nav: LinkItem[]
-  hero: {
-    firstName: string
-    lastName: string
-    lede: string
-    meta: MetaPair[]
-    image: CmsImage
-  }
-  biography: {
-    eyebrow: string
-    title: string
-    kicker: string
+export type HomeSectionBase<TType extends string> = SanityArrayMeta<TType> & {
+  enabled?: boolean
+  anchor: string
+  navLabel?: string
+  showInNav?: boolean
+}
+
+export type SectionHeaderContent = {
+  eyebrow: string
+  title: string
+  kicker?: string
+}
+
+export type HeroSection = HomeSectionBase<'heroSection'> & {
+  firstName: string
+  lastName: string
+  lede: string
+  meta: MetaPair[]
+  image: CmsImage
+}
+
+export type BiographySection = HomeSectionBase<'biographySection'> &
+  SectionHeaderContent & {
     image: CmsImage
     body: RichText
   }
-  upcoming: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type UpcomingSection = HomeSectionBase<'upcomingSection'> &
+  SectionHeaderContent & {
     featured: FeaturedProduction
   }
-  productions: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type ProductionsSection = HomeSectionBase<'productionsSection'> &
+  SectionHeaderContent & {
     items: Production[]
   }
-  appointments: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type AppointmentsSection = HomeSectionBase<'appointmentsSection'> &
+  SectionHeaderContent & {
     items: Appointment[]
   }
-  coaching: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type CoachingSection = HomeSectionBase<'coachingSection'> &
+  SectionHeaderContent & {
     videos: VideoFeature[]
   }
-  lyricLab: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type LyricLabSection = HomeSectionBase<'lyricLabSection'> &
+  SectionHeaderContent & {
     courses: LyricCourse[]
     testimonial: Testimonial
     link: LinkItem
   }
-  repertoire: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type RepertoireSection = HomeSectionBase<'repertoireSection'> &
+  SectionHeaderContent & {
     groups: RepertoireGroup[]
   }
-  education: {
-    eyebrow: string
-    title: string
-    items: EducationItem[]
-    awards: Award[]
-    languages: LanguageSkill[]
-  }
-  contact: {
-    eyebrow: string
-    title: string
-    kicker: string
+
+export type EducationSection = HomeSectionBase<'educationSection'> & {
+  eyebrow: string
+  title: string
+  items: EducationItem[]
+  awards: Award[]
+  languages: LanguageSkill[]
+}
+
+export type ContactSection = HomeSectionBase<'contactSection'> &
+  SectionHeaderContent & {
     image: CmsImage
   }
+
+export type HomeSection =
+  | HeroSection
+  | BiographySection
+  | UpcomingSection
+  | ProductionsSection
+  | AppointmentsSection
+  | CoachingSection
+  | LyricLabSection
+  | RepertoireSection
+  | EducationSection
+  | ContactSection
+
+export type HomeContent = SanityDocumentMeta<'homePage'> & {
+  sections: HomeSection[]
 }
 
 export type SiteContent = {

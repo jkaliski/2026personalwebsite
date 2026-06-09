@@ -27,7 +27,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Leave placeholder Sanity values if you only want to see the fallback-rendered site. Add real Sanity values when you are ready to edit content in Studio.
+Add the Sanity project values for the dataset that already contains the migrated production content. The site does not render from local fallback content.
 
 5. Run locally:
 
@@ -52,19 +52,16 @@ npm run build
 
 ```bash
 npx sanity@latest login
-npx sanity@latest init
 ```
 
-Choose or create a project, keep the dataset as `production`, and use the existing embedded Studio files in this repo.
+Use the existing project and dataset. The embedded Studio in this repo is already configured for `/studio`.
 
-8. Seed the Sanity dataset from the prototype content:
+8. Verify visual editing:
 
-```bash
-npm run seed:create
-npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
-```
-
-The generated `sanity-seed.ndjson` file is ignored by git because it contains local file paths for image upload. Regenerate it on each computer when needed.
+- Open `http://localhost:3000/studio/presentation`.
+- Confirm the homepage loads in the preview iframe.
+- Click section headings, images, text blocks, and referenced cards to open the matching Studio field.
+- Reorder `homePage.sections[]` and confirm the preview follows the Studio order.
 
 9. Vercel deployment:
 
@@ -73,10 +70,3 @@ The generated `sanity-seed.ndjson` file is ignored by git because it contains lo
 - Import it into Vercel as a Next.js project.
 - Add the `.env.local` values as Vercel environment variables.
 - Add a Sanity webhook pointing to `/api/revalidate`.
-
-10. After Sanity content exists:
-
-- Edit the `siteSettings` document.
-- Edit the `homePage` document and reference the supporting documents.
-- Upload the hero, biography, and contact images to Sanity.
-- Confirm edits appear on the deployed site.

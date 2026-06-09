@@ -14,14 +14,22 @@ function isStringBlocks(value: RichText): value is string[] {
   return Array.isArray(value) && (value.length === 0 || typeof value[0] === 'string')
 }
 
-export function RichTextRenderer({value, className}: {value?: RichText; className?: string}) {
+export function RichTextRenderer({
+  value,
+  className,
+  dataSanity,
+}: {
+  value?: RichText
+  className?: string
+  dataSanity?: string
+}) {
   if (!value?.length) {
     return null
   }
 
   if (isStringBlocks(value)) {
     return (
-      <div className={className}>
+      <div className={className} data-sanity={dataSanity}>
         {value.map((block) => (
           <p key={block} dangerouslySetInnerHTML={{__html: block}} />
         ))}
@@ -30,7 +38,7 @@ export function RichTextRenderer({value, className}: {value?: RichText; classNam
   }
 
   return (
-    <div className={className}>
+    <div className={className} data-sanity={dataSanity}>
       <PortableText
         value={value}
         components={{

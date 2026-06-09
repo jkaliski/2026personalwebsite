@@ -1,16 +1,15 @@
-import {draftMode} from 'next/headers'
-import {redirect} from 'next/navigation'
-import {NextRequest, NextResponse} from 'next/server'
+import {defineEnableDraftMode} from 'next-sanity/draft-mode'
 
-export async function GET(request: NextRequest) {
-  const secret = request.nextUrl.searchParams.get('secret')
-  const redirectTo = request.nextUrl.searchParams.get('redirect') || '/'
+import {client} from '@/sanity/lib/client'
 
-  if (!process.env.SANITY_REVALIDATE_SECRET || secret !== process.env.SANITY_REVALIDATE_SECRET) {
-    return NextResponse.json({message: 'Invalid draft secret'}, {status: 401})
-  }
+const readToken = process.env.SANITY_API_READ_TOKEN
 
-  const draft = await draftMode()
-  draft.enable()
-  redirect(redirectTo)
-}
+export const GET = readToken
+  ? defineEnableDraftMode({
+      client: client.withConfig({token: readToken, useCdn: false}),
+    }).GET
+  : async () =>
+      Response.json(
+        {message: 'SANITY_API_READ_TOKEN is required to enable Sanity draft mode.'},
+        {status: 500},
+      )

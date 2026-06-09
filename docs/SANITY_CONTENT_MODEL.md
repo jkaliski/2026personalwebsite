@@ -1,63 +1,56 @@
-# Sanity Content Model And Seed Notes
+# Sanity Content Model
 
-The page is intentionally structured instead of stored as static HTML.
+Sanity is the source of truth for the live website. The app does not use local fallback content.
 
-## First Documents To Create
+## Core Documents
 
-You do not need to type all prototype content manually. Generate and import the seed documents first, then edit them in Studio.
+- `siteSettings`: metadata, logo text, contact information, and external links.
+- `homePage`: singleton page document with an ordered `sections[]` page-builder array.
+- Supporting documents: `production`, `appointment`, `videoFeature`, `lyricCourse`, `repertoireGroup`, `educationItem`, `award`, `languageSkill`, and `testimonial`.
 
-```bash
-npm run seed:create
-npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
-```
+## Homepage Sections
 
-The generator reads `src/content/fallback.ts`, writes `sanity-seed.ndjson`, and creates:
+`homePage.sections[]` accepts these modular section objects:
 
-- `siteSettings`
-- `homePage`
-- `production`
-- `appointment`
-- `videoFeature`
-- `lyricCourse`
-- `repertoireGroup`
-- `educationItem`
-- `award`
-- `languageSkill`
-- `testimonial`
+- `heroSection`
+- `biographySection`
+- `upcomingSection`
+- `productionsSection`
+- `appointmentsSection`
+- `coachingSection`
+- `lyricLabSection`
+- `repertoireSection`
+- `educationSection`
+- `contactSection`
 
-The import uses stable document IDs, so rerunning it with `--replace` refreshes the seeded documents. After import, use Studio to polish, replace, add, reorder, or delete content.
+Every section includes:
 
-`src/content/fallback.ts` remains the source of truth for the first seed pass. That file mirrors the original `prototype-static/index.html` content in structured form.
+- `enabled`: controls whether the section renders.
+- `anchor`: page fragment used for in-page navigation.
+- `navLabel`: label shown in the header when enabled.
+- `showInNav`: controls whether the section appears in the header navigation.
 
-## Images
+Sections can be reordered in Studio. Repeated content inside sections stays as referenced documents, so visual editing can open the precise card/document while page-level section ordering remains editable from `homePage`.
 
-Starter web images are in `public/images/`:
+## Visual Editing
 
-- `portrait-hero.jpg`
-- `portrait-harpsichord.jpg`
-- `portrait-headshot.jpg`
-- `portrait-crossed.jpg`
-- `hero.jpg`
+Studio uses the Presentation Tool at `/studio/presentation`.
 
-The seed generator references the hero, biography, and contact starter images with Sanity's `_sanityAsset` import format. The Sanity CLI uploads those files during import.
-
-Upload or replace the final chosen images in Studio afterwards. The local fallback path can stay in each image field while migrating.
-
-Large originals and screenshots remain in `prototype-static/uploads/` and `prototype-static/screenshots/`.
-
-## Preview And Revalidation
-
-Draft mode:
+Draft mode is enabled through:
 
 ```text
-/api/draft/enable?secret=SANITY_REVALIDATE_SECRET&redirect=/
+/api/draft/enable
 ```
 
-Disable draft mode:
+Draft mode is disabled through:
 
 ```text
 /api/draft/disable
 ```
+
+The frontend adds `data-sanity` attributes to section roots, headings, images, rich text blocks, referenced cards, and contact fields. These attributes let Presentation overlays open the corresponding Studio field.
+
+## Revalidation
 
 Webhook endpoint:
 

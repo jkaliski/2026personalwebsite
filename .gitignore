@@ -28,4 +28,7 @@ pnpm-debug.log*
 *.swo
 
 # generated Sanity import with local file paths
-sanity-seed.ndjson
+sanity-seed*.ndjson
+
+# TypeScript incremental cache
+*.tsbuildinfo

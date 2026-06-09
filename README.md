@@ -1,25 +1,23 @@
 # Jaroslaw Kaliski Website
 
-Next.js + Sanity port of the static Jaroslaw Kaliski website prototype.
+Next.js + Sanity website for Jaroslaw Kaliski.
 
-The original prototype has been preserved in `prototype-static/`. The live app source is now a TypeScript Next.js App Router project that renders from local fallback content until Sanity environment variables are configured.
+The original static prototype is preserved in `prototype-static/`. The live app is a TypeScript Next.js App Router project whose editable content comes from the Sanity `production` dataset.
 
 ## Current Shape
 
 - Public site: `src/app/page.tsx`
-- Sanity Studio: `/studio`
+- Sanity Studio and Presentation Tool: `/studio`
 - Main editable content contract: `src/types/site.ts`
-- Local fallback/seed content: `src/content/fallback.ts`
 - Sanity schemas: `src/sanity/schemaTypes/`
-- Static starter images: `public/images/`
+- Sanity client/query/live helpers: `src/sanity/lib/`
+- Static public assets: `public/images/`
 - Original prototype archive: `prototype-static/`
 - Work log: `docs/IMPLEMENTATION_LOG.md`
 
 ## Requirements
 
-Use a computer with Node.js and a package manager available. Node 22 LTS or newer is recommended.
-
-This work computer had Node available but no `npm`, `pnpm`, `yarn`, or `bun` on PATH, so dependency installation and full build verification are expected to happen on the next machine.
+Use Node 22 LTS or newer. The current dependency set also works on newer Node versions, but some packages warn unless Node is at least `22.12.0`.
 
 ## Setup
 
@@ -37,7 +35,7 @@ Open:
 
 ## Sanity
 
-Create or link a Sanity project, then fill `.env.local`:
+Fill `.env.local` with the project that contains the migrated production content:
 
 ```bash
 NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
@@ -48,14 +46,13 @@ SANITY_API_READ_TOKEN=your-read-token
 SANITY_REVALIDATE_SECRET=long-random-secret
 ```
 
-The site uses local fallback content until Sanity has real `siteSettings` and `homePage` documents. To recreate the prototype content in Sanity:
+The site no longer renders from local fallback content. It expects these Sanity documents to exist:
 
-```bash
-npm run seed:create
-npx sanity@latest datasets import --dataset production sanity-seed.ndjson --replace
-```
+- `siteSettings`
+- singleton `homePage` with `sections[]`
+- referenced documents for productions, appointments, videos, courses, repertoire, education, awards, languages, and testimonials
 
-See `docs/SANITY_CONTENT_MODEL.md` for details.
+Use `/studio/presentation` to preview the live page inside Studio and click page elements into the matching document fields.
 
 ## Scripts
 
@@ -66,9 +63,6 @@ npm run typecheck
 npm run build
 npm run start
 npm run sanity
-npm run seed:create
-npm run seed:import
-npm run seed:note
 ```
 
 ## Vercel

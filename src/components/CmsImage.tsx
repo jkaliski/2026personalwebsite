@@ -10,6 +10,7 @@ type CmsImageProps = {
   sizes: string
   className?: string
   priority?: boolean
+  dataSanity?: string
 }
 
 function imageSrc(image: CmsImageType | undefined, width: number, height: number) {
@@ -24,7 +25,7 @@ function imageSrc(image: CmsImageType | undefined, width: number, height: number
   return image.asset?.url || image.fallbackSrc || '/images/portrait-hero.jpg'
 }
 
-export function CmsImage({image, width, height, sizes, className, priority}: CmsImageProps) {
+export function CmsImage({image, width, height, sizes, className, priority, dataSanity}: CmsImageProps) {
   return (
     <Image
       src={imageSrc(image, width, height)}
@@ -34,6 +35,7 @@ export function CmsImage({image, width, height, sizes, className, priority}: Cms
       sizes={sizes}
       priority={priority}
       className={className}
+      data-sanity={dataSanity}
     />
   )
 }
