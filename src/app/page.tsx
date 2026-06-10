@@ -1,10 +1,12 @@
 import type {Metadata} from 'next'
+import {draftMode} from 'next/headers'
 
 import {HomePage} from '@/components/HomePage'
-import {getSiteContent} from '@/sanity/lib/fetch'
+import {HomePagePreview} from '@/components/HomePagePreview'
+import {getDraftSiteContentInitial, getPublishedSiteContent} from '@/sanity/lib/fetch'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const content = await getSiteContent()
+  const content = await getPublishedSiteContent()
 
   return {
     title: content.site.title,
@@ -18,7 +20,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const content = await getSiteContent()
+  const {isEnabled} = await draftMode()
+
+  if (isEnabled) {
+    const initial = await getDraftSiteContentInitial()
+
+    return <HomePagePreview initial={initial} />
+  }
+
+  const content = await getPublishedSiteContent()
 
   return <HomePage content={content} />
 }

@@ -4,8 +4,8 @@ import {Inter, Inter_Tight, JetBrains_Mono} from 'next/font/google'
 import {VisualEditing} from 'next-sanity/visual-editing'
 import type {ReactNode} from 'react'
 
-import {hasSanityReadToken, SanityLive} from '@/sanity/lib/live'
-import {skipDraftLiveRefresh} from '@/sanity/lib/liveActions'
+import {SanityDraftLiveMode} from '@/components/SanityDraftLiveMode'
+import {SanityLive} from '@/sanity/lib/live'
 
 import './globals.css'
 
@@ -36,17 +36,19 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({children}: Readonly<{children: ReactNode}>) {
   const {isEnabled} = await draftMode()
-  const includeDrafts = isEnabled && hasSanityReadToken
 
   return (
     <html lang="en" className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
       <body>
         {children}
-        <SanityLive
-          includeDrafts={includeDrafts}
-          action={includeDrafts ? skipDraftLiveRefresh : undefined}
-        />
-        {isEnabled ? <VisualEditing /> : null}
+        {isEnabled ? (
+          <>
+            <SanityDraftLiveMode />
+            <VisualEditing />
+          </>
+        ) : (
+          <SanityLive includeDrafts={false} />
+        )}
       </body>
     </html>
   )
