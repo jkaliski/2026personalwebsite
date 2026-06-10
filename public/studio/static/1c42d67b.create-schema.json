@@ -1,0 +1,1487 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Site title"
+      },
+      {
+        "rows": 3,
+        "name": "description",
+        "type": "text",
+        "title": "Meta description"
+      },
+      {
+        "name": "logoText",
+        "type": "string",
+        "title": "Logo text"
+      },
+      {
+        "name": "logoSuffix",
+        "type": "string",
+        "title": "Logo suffix"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "name": "phone",
+        "type": "string"
+      },
+      {
+        "name": "basedIn",
+        "type": "string",
+        "title": "Based in"
+      },
+      {
+        "name": "faculty",
+        "type": "string"
+      },
+      {
+        "name": "representation",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "linkItem",
+            "title": "Link"
+          }
+        ],
+        "name": "links",
+        "type": "array",
+        "title": "External links"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document",
+    "title": "Site settings"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ]
+          }
+        ],
+        "of": [
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "top",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Top",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": false,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "firstName",
+                "type": "string",
+                "title": "First name"
+              },
+              {
+                "name": "lastName",
+                "type": "string",
+                "title": "Last name"
+              },
+              {
+                "rows": 4,
+                "name": "lede",
+                "type": "text"
+              },
+              {
+                "of": [
+                  {
+                    "type": "metaPair",
+                    "title": "Metadata pair"
+                  }
+                ],
+                "name": "meta",
+                "type": "array",
+                "title": "Metadata"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "name": "image",
+                "type": "imageWithCaption"
+              }
+            ],
+            "type": "object",
+            "name": "heroSection",
+            "title": "Hero"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "biography",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Biography",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "name": "image",
+                "type": "imageWithCaption"
+              },
+              {
+                "name": "body",
+                "type": "richText"
+              }
+            ],
+            "type": "object",
+            "name": "biographySection",
+            "title": "Biography"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "upcoming",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Upcoming",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "fields": [
+                  {
+                    "name": "eyebrow",
+                    "type": "string"
+                  },
+                  {
+                    "name": "title",
+                    "type": "string"
+                  },
+                  {
+                    "name": "subtitle",
+                    "type": "string"
+                  },
+                  {
+                    "name": "body",
+                    "type": "richText"
+                  },
+                  {
+                    "rows": 3,
+                    "name": "quote",
+                    "type": "text"
+                  },
+                  {
+                    "name": "quoteAttribution",
+                    "type": "string",
+                    "title": "Quote attribution"
+                  },
+                  {
+                    "of": [
+                      {
+                        "type": "roleCredit",
+                        "title": "Role credit"
+                      }
+                    ],
+                    "name": "credits",
+                    "type": "array",
+                    "title": "Cast credits"
+                  },
+                  {
+                    "of": [
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "name": "creative",
+                    "type": "array",
+                    "title": "Creative team"
+                  },
+                  {
+                    "rows": 3,
+                    "name": "dates",
+                    "type": "text",
+                    "title": "Performance dates"
+                  },
+                  {
+                    "name": "personalRole",
+                    "type": "string",
+                    "title": "J. Kaliski role"
+                  },
+                  {
+                    "name": "link",
+                    "type": "linkItem"
+                  }
+                ],
+                "name": "featured",
+                "type": "object",
+                "title": "Featured production"
+              }
+            ],
+            "type": "object",
+            "name": "upcomingSection",
+            "title": "Upcoming"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "productions",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Productions",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "production"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to production"
+                  }
+                ],
+                "name": "items",
+                "type": "array",
+                "title": "Productions"
+              }
+            ],
+            "type": "object",
+            "name": "productionsSection",
+            "title": "Productions"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "teaching",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Teaching",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "appointment"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to appointment"
+                  }
+                ],
+                "name": "items",
+                "type": "array",
+                "title": "Appointments"
+              }
+            ],
+            "type": "object",
+            "name": "appointmentsSection",
+            "title": "Appointments"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "coaching",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Coaching",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "videoFeature"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to video feature"
+                  }
+                ],
+                "name": "videos",
+                "type": "array"
+              }
+            ],
+            "type": "object",
+            "name": "coachingSection",
+            "title": "Coaching"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "lyric-lab",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Lyric LAB",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "lyricCourse"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to lyric lab course"
+                  }
+                ],
+                "name": "courses",
+                "type": "array"
+              },
+              {
+                "to": [
+                  {
+                    "type": "testimonial"
+                  }
+                ],
+                "name": "testimonial",
+                "type": "reference"
+              },
+              {
+                "name": "link",
+                "type": "linkItem"
+              }
+            ],
+            "type": "object",
+            "name": "lyricLabSection",
+            "title": "Lyric LAB"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "repertoire",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Repertoire",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "repertoireGroup"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to repertoire group"
+                  }
+                ],
+                "name": "groups",
+                "type": "array"
+              }
+            ],
+            "type": "object",
+            "name": "repertoireSection",
+            "title": "Repertoire"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "education",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Education",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "educationItem"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to education item"
+                  }
+                ],
+                "name": "items",
+                "type": "array",
+                "title": "Education items"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "award"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to award"
+                  }
+                ],
+                "name": "awards",
+                "type": "array"
+              },
+              {
+                "of": [
+                  {
+                    "to": [
+                      {
+                        "type": "languageSkill"
+                      }
+                    ],
+                    "type": "reference",
+                    "title": "Reference to language skill"
+                  }
+                ],
+                "name": "languages",
+                "type": "array"
+              }
+            ],
+            "type": "object",
+            "name": "educationSection",
+            "title": "Education"
+          },
+          {
+            "fields": [
+              {
+                "initialValue": true,
+                "name": "enabled",
+                "type": "boolean",
+                "title": "Show section"
+              },
+              {
+                "initialValue": "contact",
+                "validation": [
+                  {
+                    "level": "error",
+                    "rules": [
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ]
+                  }
+                ],
+                "name": "anchor",
+                "type": "string",
+                "title": "Page anchor"
+              },
+              {
+                "initialValue": "Contact",
+                "name": "navLabel",
+                "type": "string",
+                "title": "Navigation label"
+              },
+              {
+                "initialValue": true,
+                "name": "showInNav",
+                "type": "boolean",
+                "title": "Show in navigation"
+              },
+              {
+                "name": "eyebrow",
+                "type": "string"
+              },
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "rows": 3,
+                "name": "kicker",
+                "type": "text"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "name": "image",
+                "type": "imageWithCaption"
+              }
+            ],
+            "type": "object",
+            "name": "contactSection",
+            "title": "Contact"
+          }
+        ],
+        "name": "sections",
+        "type": "array",
+        "title": "Page sections"
+      }
+    ],
+    "name": "homePage",
+    "type": "document",
+    "title": "Home page"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "name": "meta",
+        "type": "text",
+        "title": "Details"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "roles",
+        "type": "array",
+        "title": "Role tags"
+      },
+      {
+        "name": "venue",
+        "type": "string"
+      }
+    ],
+    "name": "production",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "institution",
+        "type": "string"
+      },
+      {
+        "name": "span",
+        "type": "string"
+      },
+      {
+        "name": "body",
+        "type": "richText"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "bullets",
+        "type": "array"
+      }
+    ],
+    "name": "appointment",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "name": "tag",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "description": "Use the player.vimeo.com embed URL when this is a video.",
+        "name": "vimeoUrl",
+        "type": "url",
+        "title": "Vimeo embed URL"
+      },
+      {
+        "of": [
+          {
+            "type": "linkItem",
+            "title": "Link"
+          }
+        ],
+        "name": "archiveLinks",
+        "type": "array",
+        "title": "Archive links"
+      }
+    ],
+    "name": "videoFeature",
+    "type": "document",
+    "title": "Video feature"
+  },
+  {
+    "fields": [
+      {
+        "name": "order",
+        "type": "string",
+        "title": "Order label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "launch",
+        "type": "string",
+        "title": "Launch note"
+      },
+      {
+        "rows": 4,
+        "name": "body",
+        "type": "text"
+      }
+    ],
+    "name": "lyricCourse",
+    "type": "document",
+    "title": "Lyric LAB course"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "items",
+        "type": "array"
+      }
+    ],
+    "name": "repertoireGroup",
+    "type": "document",
+    "title": "Repertoire group"
+  },
+  {
+    "fields": [
+      {
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "institution",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "name": "detail",
+        "type": "text"
+      }
+    ],
+    "name": "educationItem",
+    "type": "document",
+    "title": "Education item"
+  },
+  {
+    "fields": [
+      {
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      }
+    ],
+    "name": "award",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Language"
+      },
+      {
+        "name": "level",
+        "type": "string",
+        "title": "Level label"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              },
+              {
+                "flag": "max",
+                "constraint": 5
+              }
+            ]
+          }
+        ],
+        "name": "value",
+        "type": "number",
+        "title": "Level value"
+      }
+    ],
+    "name": "languageSkill",
+    "type": "document",
+    "title": "Language skill"
+  },
+  {
+    "fields": [
+      {
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "name": "attribution",
+        "type": "string"
+      }
+    ],
+    "name": "testimonial",
+    "type": "document"
+  },
+  {
+    "options": {
+      "hotspot": true
+    },
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "alt",
+        "type": "string",
+        "title": "Alt text"
+      },
+      {
+        "name": "caption",
+        "type": "string"
+      },
+      {
+        "description": "Optional legacy path such as /images/portrait-hero.jpg. Prefer uploading the image asset to Sanity.",
+        "name": "fallbackSrc",
+        "type": "string",
+        "title": "Legacy local image path"
+      }
+    ],
+    "name": "imageWithCaption",
+    "type": "image",
+    "title": "Image with caption"
+  },
+  {
+    "of": [
+      {
+        "lists": [
+          {
+            "value": "bullet",
+            "title": "Bullet"
+          }
+        ],
+        "marks": {
+          "annotations": [
+            {
+              "fields": [
+                {
+                  "validation": [
+                    {
+                      "level": "error",
+                      "rules": [
+                        {
+                          "flag": "uri",
+                          "constraint": {
+                            "options": {
+                              "scheme": [
+                                "/^http$/",
+                                "/^https$/"
+                              ],
+                              "allowRelative": false,
+                              "relativeOnly": false,
+                              "allowCredentials": false
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "name": "href",
+                  "type": "url",
+                  "title": "URL"
+                }
+              ],
+              "name": "link",
+              "type": "object"
+            }
+          ],
+          "decorators": [
+            {
+              "value": "strong",
+              "title": "Strong"
+            },
+            {
+              "value": "em",
+              "title": "Emphasis"
+            }
+          ]
+        },
+        "of": [],
+        "styles": [
+          {
+            "value": "normal",
+            "title": "Normal"
+          },
+          {
+            "value": "blockquote",
+            "title": "Quote"
+          }
+        ],
+        "type": "block"
+      }
+    ],
+    "name": "richText",
+    "type": "array",
+    "title": "Rich text"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "href",
+        "type": "string",
+        "title": "URL or anchor"
+      }
+    ],
+    "name": "linkItem",
+    "type": "object",
+    "title": "Link"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "value",
+        "type": "string"
+      }
+    ],
+    "name": "metaPair",
+    "type": "object",
+    "title": "Metadata pair"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "role",
+        "type": "string"
+      }
+    ],
+    "name": "roleCredit",
+    "type": "object",
+    "title": "Role credit"
+  }
+]

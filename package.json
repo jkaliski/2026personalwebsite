@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "sanity": "sanity",
+    "sanity:manifest:extract": "sanity manifest extract --path public/studio/static",
+    "sanity:schemas:deploy": "sanity schemas deploy --manifest-dir public/studio/static",
     "sanity:migrate-home-sections": "sanity exec scripts/migrate-homepage-sections.mjs --with-user-token --"
   },
   "dependencies": {
