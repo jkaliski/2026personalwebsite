@@ -82,7 +82,7 @@ export default defineConfig({
   dataset,
   basePath: '/studio',
   plugins: [
-    structureTool(),
+    structureTool({name: 'default', title: 'Structure'}),
     presentationTool({
       previewUrl: {
         initial: siteUrl,

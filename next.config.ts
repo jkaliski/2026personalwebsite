@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/studio/structure/:path*',
+        destination: '/studio/default/:path*',
+        permanent: false,
+      },
+    ]
+  },
 }
 
 export default nextConfig
