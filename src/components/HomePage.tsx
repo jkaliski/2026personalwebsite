@@ -386,11 +386,10 @@ function Coaching({home, section}: {home: HomeContent; section: CoachingSection}
                   />
                 ) : (
                   <div className="archive-card">
-                    <div className="smallcaps">Further coaching archive</div>
-                    <p>
-                      French baroque ornamentation · German role study · Italian opera — a catalogue of working
-                      sessions.
-                    </p>
+                    <div className="smallcaps" data-sanity={dataSanity(video, 'title')}>
+                      {video.title}
+                    </div>
+                    {video.description ? <p data-sanity={dataSanity(video, 'description')}>{video.description}</p> : null}
                     <div className="archive-links" data-sanity={dataSanity(video, 'archiveLinks')}>
                       {video.archiveLinks?.map((link) => (
                         <a key={link.href} href={link.href} target="_blank" rel="noopener">
@@ -401,17 +400,19 @@ function Coaching({home, section}: {home: HomeContent; section: CoachingSection}
                   </div>
                 )}
               </div>
-              <div className="cap">
-                <div>
-                  <h4 data-sanity={dataSanity(video, 'title')}>{video.title}</h4>
-                  <div className="who" data-sanity={dataSanity(video, 'description')}>
-                    {video.description}
+              {video.vimeoUrl ? (
+                <div className="cap">
+                  <div>
+                    <h4 data-sanity={dataSanity(video, 'title')}>{video.title}</h4>
+                    <div className="who" data-sanity={dataSanity(video, 'description')}>
+                      {video.description}
+                    </div>
+                  </div>
+                  <div className="tag" data-sanity={dataSanity(video, 'tag')}>
+                    {video.tag}
                   </div>
                 </div>
-                <div className="tag" data-sanity={dataSanity(video, 'tag')}>
-                  {video.tag}
-                </div>
-              </div>
+              ) : null}
             </article>
           ))}
         </div>
