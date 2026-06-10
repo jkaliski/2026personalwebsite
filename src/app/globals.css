@@ -1110,6 +1110,23 @@ figcaption {
     font-size: 1.25rem;
   }
 
+  .portrait-frame {
+    aspect-ratio: 9 / 16;
+  }
+
+  .archive-frame {
+    aspect-ratio: auto;
+  }
+
+  .archive-frame .archive-card {
+    min-height: 340px;
+    padding: 2.25rem 1.5rem;
+  }
+
+  .archive-card p {
+    font-size: 1.45rem;
+  }
+
   .prod {
     grid-template-columns: 1fr;
     gap: 0.7rem;

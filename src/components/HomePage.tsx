@@ -375,7 +375,7 @@ function Coaching({home, section}: {home: HomeContent; section: CoachingSection}
         <div className="videos" data-sanity={sectionData(home, section, 'videos')}>
           {section.videos.map((video: VideoFeature, index) => (
             <article className="vid" key={itemKey(video, index)} data-sanity={dataSanity(video, 'title')}>
-              <div className="frame">
+              <div className={videoFrameClass(video)}>
                 {video.vimeoUrl ? (
                   <iframe
                     src={video.vimeoUrl}
@@ -418,6 +418,18 @@ function Coaching({home, section}: {home: HomeContent; section: CoachingSection}
       </div>
     </section>
   )
+}
+
+function videoFrameClass(video: VideoFeature) {
+  if (!video.vimeoUrl) {
+    return 'frame archive-frame'
+  }
+
+  return isPortraitVideo(video) ? 'frame portrait-frame' : 'frame'
+}
+
+function isPortraitVideo(video: VideoFeature) {
+  return video.vimeoUrl?.includes('/1173724748') || /arresta aminta/i.test(video.title)
 }
 
 function LyricLab({home, section}: {home: HomeContent; section: LyricLabSection}) {
