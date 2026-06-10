@@ -5,6 +5,7 @@ import {VisualEditing} from 'next-sanity/visual-editing'
 import type {ReactNode} from 'react'
 
 import {hasSanityReadToken, SanityLive} from '@/sanity/lib/live'
+import {skipDraftLiveRefresh} from '@/sanity/lib/liveActions'
 
 import './globals.css'
 
@@ -35,12 +36,16 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({children}: Readonly<{children: ReactNode}>) {
   const {isEnabled} = await draftMode()
+  const includeDrafts = isEnabled && hasSanityReadToken
 
   return (
     <html lang="en" className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
       <body>
         {children}
-        <SanityLive includeDrafts={isEnabled && hasSanityReadToken} />
+        <SanityLive
+          includeDrafts={includeDrafts}
+          action={includeDrafts ? skipDraftLiveRefresh : undefined}
+        />
         {isEnabled ? <VisualEditing /> : null}
       </body>
     </html>
