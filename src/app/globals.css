@@ -667,10 +667,6 @@ figcaption {
   text-transform: uppercase;
 }
 
-.lyric {
-  background: var(--paper-3);
-}
-
 .lyric-grid,
 .repertoire-grid {
   display: grid;
