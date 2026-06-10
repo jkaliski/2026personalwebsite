@@ -268,6 +268,10 @@ nav.primary a::before {
   margin: 5.5rem 0 0;
 }
 
+.hero-image picture {
+  display: block;
+}
+
 .hero-image img {
   width: 100%;
   height: auto;
@@ -1075,6 +1079,11 @@ figcaption {
 
   .hero {
     padding-top: 4rem;
+  }
+
+  .hero-image img {
+    aspect-ratio: 4 / 5;
+    object-position: 54% center;
   }
 
   .hero-title {

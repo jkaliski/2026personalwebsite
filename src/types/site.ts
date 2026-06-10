@@ -16,6 +16,7 @@ export type CmsImage = {
   _type?: 'image'
   asset?: {
     _ref?: string
+    _id?: string
     url?: string
   }
   alt?: string

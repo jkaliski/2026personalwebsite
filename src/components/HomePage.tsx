@@ -170,6 +170,14 @@ function Hero({content, section}: {content: SiteContent; section: HeroSection}) 
             width={2400}
             height={1350}
             sizes="100vw"
+            sources={[
+              {
+                media: '(max-width: 640px)',
+                width: 760,
+                height: 950,
+                sizes: 'calc(100vw - 40px)',
+              },
+            ]}
             priority
             dataSanity={sectionData(home, section, 'image')}
           />
