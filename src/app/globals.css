@@ -857,9 +857,9 @@ figcaption {
 .cta-email {
   border-bottom-color: var(--accent-pale);
   font-family: var(--font-display), var(--font-inter), sans-serif;
-  font-size: 4rem;
+  font-size: 3.15rem;
   font-weight: 620;
-  line-height: 1;
+  line-height: 1.05;
   overflow-wrap: anywhere;
 }
 
@@ -923,8 +923,7 @@ figcaption {
     font-size: 9rem;
   }
 
-  .section-title,
-  .cta-email {
+  .section-title {
     font-size: 4.1rem;
   }
 }
@@ -1099,9 +1098,12 @@ figcaption {
   }
 
   .section-title,
-  .featured h3,
-  .cta-email {
+  .featured h3 {
     font-size: 2.65rem;
+  }
+
+  .cta-email {
+    font-size: 2.35rem;
   }
 
   .section-kicker,
